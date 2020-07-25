@@ -1,8 +1,11 @@
 package econo.webper.server.component;
 
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
-@Entity
+@Entity @NoArgsConstructor @Getter
 @Inheritance(strategy = InheritanceType.JOINED)
 public class Component {
 
@@ -11,5 +14,12 @@ public class Component {
     private Integer id;
 
     private String title;
+
+    private Integer directoryId;
+
+    public Component(String title, Integer directoryId) {
+        this.title = title;
+        this.directoryId = directoryId;
+    }
 
 }

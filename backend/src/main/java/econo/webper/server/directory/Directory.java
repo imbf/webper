@@ -2,6 +2,7 @@ package econo.webper.server.directory;
 
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import econo.webper.server.component.Blog;
 import econo.webper.server.component.Component;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -70,5 +71,18 @@ public class Directory {
         this.title = title;
         this.category = category;
         return this;
+    }
+
+    public boolean saveComponent(Component component) {
+        return components.add(component);
+    }
+
+    public Component findComponentById(Integer id) {
+        for (Component component : components) {
+            if (component.getId() == id) {
+                return component;
+            }
+        }
+        return null;
     }
 }
