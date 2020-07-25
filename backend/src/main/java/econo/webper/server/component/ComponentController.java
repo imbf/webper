@@ -71,4 +71,21 @@ public class ComponentController {
         return ResponseEntity.ok(savedMember);
     }
 
+    @GetMapping("/component/{category}/{id}")
+    public ResponseEntity getComponent(@PathVariable String category, @PathVariable Integer id) {
+        Component component = componentService.findById(id);
+        if (category == "blog") {
+            return ResponseEntity.ok((Blog) component);
+        }
+        if (category == "portal"){
+            return ResponseEntity.ok((Portal) component);
+        }
+        if (category == "video") {
+            return ResponseEntity.ok((Video) component);
+        }
+        if (category == "wishlist") {
+            return ResponseEntity.ok((WishList) component);
+        }
+        return ResponseEntity.ok(component);
+    }
 }
